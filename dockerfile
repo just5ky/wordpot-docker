@@ -16,10 +16,10 @@ RUN apk -U --no-cache add \
     py3-pip \
     py3-werkzeug \
     python3 \
-    python3-dev && \
-    #	     
-    # Install wordpot from GitHub and setup
-    mkdir -p /opt && \
+    python3-dev
+#	     
+# Install wordpot from GitHub and setup
+RUN    mkdir -p /opt && \
     cd /opt/ && \
     git clone https://github.com/Will-777/wordpot2 && \
     cd wordpot2 && \
@@ -27,15 +27,15 @@ RUN apk -U --no-cache add \
     #    cp /root/dist/views.py /opt/wordpot2/wordpot/views.py && \
     cp /root/dist/requirements.txt . && \
     pip3 install -r requirements.txt && \
-    setcap cap_net_bind_service=+ep /usr/bin/python3.9 && \
-    #
-    # Setup user, groups and configs
-    addgroup -g 2000 wordpot && \
+    setcap cap_net_bind_service=+ep /usr/bin/python3.9
+#
+# Setup user, groups and configs
+RUN    addgroup -g 2000 wordpot && \
     adduser -S -H -s /bin/ash -u 2000 -D -g 2000 wordpot && \
-    chown wordpot:wordpot -R /opt/wordpot2 && \
-    #
-    # Clean up
-    apk del --purge build-base \
+    chown wordpot:wordpot -R /opt/wordpot2
+#
+# Clean up
+RUN    apk del --purge build-base \
     git \
     python3-dev && \
     rm -rf /root/* /var/cache/apk/* /opt/wordpot2/.git
