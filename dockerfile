@@ -24,7 +24,6 @@ RUN    mkdir -p /opt && \
     git clone https://github.com/Will-777/wordpot2 && \
     cd wordpot2 && \
     git checkout e93a2e00d84d280b0acd58ba6889b4bee8a6e4d2 && \
-    #    cp /root/dist/views.py /opt/wordpot2/wordpot/views.py && \
     cp /root/dist/requirements.txt . && \
     pip3 install -r requirements.txt && \
     #    setcap cap_net_bind_service=+ep /usr/bin/python3
@@ -45,7 +44,7 @@ STOPSIGNAL SIGINT
 USER wordpot:wordpot
 WORKDIR /opt/wordpot2
 COPY log.py .
-RUN mkdir -p /log
+RUN mkdir -p /opt/wordpot2//log
 # CMD ["/usr/bin/python3","wordpot2.py", "--host", "0.0.0.0", "--port", "80", "--title", "QA 20220317"]
 
 CMD ["/usr/bin/python3","log.py"]
