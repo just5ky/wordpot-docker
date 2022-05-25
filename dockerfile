@@ -26,7 +26,7 @@ RUN    mkdir -p /opt && \
     git checkout e93a2e00d84d280b0acd58ba6889b4bee8a6e4d2 && \
     #    cp /root/dist/views.py /opt/wordpot2/wordpot/views.py && \
     cp /root/dist/requirements.txt . && \
-    pip3 install -r requirements.txt && \
+    pip3 install -r requirements.txt 
     #    setcap cap_net_bind_service=+ep /usr/bin/python3
 
 # Setup user, groups and configs
