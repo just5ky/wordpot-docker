@@ -20,6 +20,7 @@ RUN apk -U --no-cache add \
 
 # Install wordpot from GitHub and setup
 RUN    mkdir -p /opt && \
+    mkdir -p /log && touch /log/wordpot.log && \
     cd /opt/ && \
     git clone https://github.com/Will-777/wordpot2 && \
     cd wordpot2 && \
@@ -29,9 +30,9 @@ RUN    mkdir -p /opt && \
     #    setcap cap_net_bind_service=+ep /usr/bin/python3
 
 # Setup user, groups and configs
-RUN    addgroup -g 2000 wordpot && \
-    adduser -S -H -s /bin/ash -u 2000 -D -g 2000 wordpot && \
-    chown wordpot:wordpot -R /opt/wordpot2
+#RUN    addgroup -g 2000 wordpot && \
+#    adduser -S -H -s /bin/ash -u 2000 -D -g 2000 wordpot && \
+#    chown wordpot:wordpot -R /opt/wordpot2
 
 # Clean up
 RUN    apk del --purge build-base \
@@ -41,7 +42,7 @@ RUN    apk del --purge build-base \
 #
 # Start wordpot
 STOPSIGNAL SIGINT
-USER wordpot:wordpot
+#USER wordpot:wordpot
 WORKDIR /opt/wordpot2
 COPY log.py .
 # CMD ["/usr/bin/python3","wordpot2.py", "--host", "0.0.0.0", "--port", "80", "--title", "QA 20220317"]
