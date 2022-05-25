@@ -18,5 +18,5 @@ services:
     ports:
       - "80:80"
     volumes:
-      - $DOCKERDIR/wordpot/:/opt/wordpot2/log/
+      - $DOCKERDIR/wordpot/:/log/
 ```
