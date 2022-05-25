@@ -23,7 +23,6 @@ RUN    mkdir -p /opt && \
     cd /opt/ && \
     git clone https://github.com/Will-777/wordpot2 && \
     cd wordpot2 && \
-    mkdir -p /opt/wordpot2/log && \
     git checkout e93a2e00d84d280b0acd58ba6889b4bee8a6e4d2 && \
     cp /root/dist/requirements.txt . && \
     pip3 install -r requirements.txt 

@@ -1,10 +1,9 @@
 import subprocess as sp
 from concurrent.futures import ThreadPoolExecutor
 
-
 def log_popen_pipe(p, stdfile):
 
-    with open("/opt/wordpot2/log/wordpot.log", "w") as f:
+    with open("/log/wordpot.log", "w") as f:
 
         while p.poll() is None:
             f.write(stdfile.readline())
@@ -12,7 +11,6 @@ def log_popen_pipe(p, stdfile):
 
         # Write the rest from the buffer
         f.write(stdfile.read())
-
 
 with sp.Popen(
     ["python3","wordpot2.py","--host","0.0.0.0","--port","80","--title","QA 20220317",],stdout=sp.PIPE,stderr=sp.PIPE,text=True,
