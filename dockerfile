@@ -27,7 +27,7 @@ RUN    mkdir -p /opt && \
     #    cp /root/dist/views.py /opt/wordpot2/wordpot/views.py && \
     cp /root/dist/requirements.txt . && \
     pip3 install -r requirements.txt && \
-    setcap cap_net_bind_service=+ep /usr/bin/python3.9
+    setcap cap_net_bind_service=+ep /usr/bin/python3
 #
 # Setup user, groups and configs
 RUN    addgroup -g 2000 wordpot && \
