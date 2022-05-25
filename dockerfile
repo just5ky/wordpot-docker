@@ -44,6 +44,7 @@ STOPSIGNAL SIGINT
 USER wordpot:wordpot
 WORKDIR /opt/wordpot2
 COPY log.py .
+RUN mkdir -p /opt/wordpot2/log
 # CMD ["/usr/bin/python3","wordpot2.py", "--host", "0.0.0.0", "--port", "80", "--title", "QA 20220317"]
 
 CMD ["/usr/bin/python3","log.py"]
