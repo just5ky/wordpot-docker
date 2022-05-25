@@ -1,8 +1,8 @@
 FROM alpine
-#
+
 # Include dist
 COPY requirements.txt /root/dist/
-#
+
 # Install packages
 RUN apk -U --no-cache add \
     build-base \
@@ -17,7 +17,7 @@ RUN apk -U --no-cache add \
     py3-werkzeug \
     python3 \
     python3-dev
-#	     
+
 # Install wordpot from GitHub and setup
 RUN    mkdir -p /opt && \
     cd /opt/ && \
@@ -27,13 +27,13 @@ RUN    mkdir -p /opt && \
     #    cp /root/dist/views.py /opt/wordpot2/wordpot/views.py && \
     cp /root/dist/requirements.txt . && \
     pip3 install -r requirements.txt && \
-    setcap cap_net_bind_service=+ep /usr/bin/python3
-#
+    #    setcap cap_net_bind_service=+ep /usr/bin/python3
+
 # Setup user, groups and configs
 RUN    addgroup -g 2000 wordpot && \
     adduser -S -H -s /bin/ash -u 2000 -D -g 2000 wordpot && \
     chown wordpot:wordpot -R /opt/wordpot2
-#
+
 # Clean up
 RUN    apk del --purge build-base \
     git \
