@@ -15,10 +15,7 @@ def log_popen_pipe(p, stdfile):
 
 
 with sp.Popen(
-    ["python3","wordpot2.py","--host","0.0.0.0","--port","80","--title","QA 20220317",],
-    stdout=sp.PIPE,
-    stderr=sp.PIPE,
-    text=True,
+    ["python3","wordpot2.py","--host","0.0.0.0","--port","80","--title","QA 20220317",],stdout=sp.PIPE,stderr=sp.PIPE,text=True,
 ) as p:
 
     with ThreadPoolExecutor(2) as pool:
